@@ -25,8 +25,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Colors.pink[50]!,
               Colors.white,
+              Colors.grey[50]!,
             ],
           ),
         ),
@@ -81,7 +81,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           color: Colors.grey[200],
                           child: const Center(
                             child: CircularProgressIndicator(
-                              color: Colors.pink,
+                              color: Colors.grey,
                               strokeWidth: 2,
                             ),
                           ),
@@ -284,7 +284,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               color: Colors.black87,
             ),
           ),
-          backgroundColor: Colors.pink[50],
+          backgroundColor: Colors.grey[200],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -404,13 +404,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         borderRadius: BorderRadius.circular(28),
         gradient: LinearGradient(
           colors: [
-            Colors.pink[400]!,
-            Colors.pink[600]!,
+            Colors.black87,
+            Colors.black54,
           ],
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.pink.withOpacity(0.3),
+            color: Colors.black.withOpacity(0.2),
             blurRadius: 12,
             offset: const Offset(0, 6),
           ),
@@ -422,7 +422,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Playing trailer for ${widget.movie.title}'),
-              backgroundColor: Colors.pink,
+              backgroundColor: Colors.black87,
             ),
           );
         },

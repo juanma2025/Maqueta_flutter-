@@ -54,9 +54,8 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.pink[50]!,
               Colors.white,
-              Colors.pink[100]!,
+              Colors.grey[50]!,
             ],
           ),
         ),
@@ -165,8 +164,8 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            Colors.pink[300]!,
-                            Colors.pink[500]!,
+                            Colors.grey[300]!,
+                            Colors.grey[500]!,
                           ],
                         )
                       : LinearGradient(
@@ -179,13 +178,13 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                         ),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: chip.isActive ? Colors.pink[400]! : Colors.grey[300]!,
+                    color: chip.isActive ? Colors.grey[600]! : Colors.grey[300]!,
                     width: chip.isActive ? 2 : 1,
                   ),
                   boxShadow: chip.isActive
                       ? [
                           BoxShadow(
-                            color: Colors.pink.withOpacity(0.3),
+                            color: Colors.black.withOpacity(0.15),
                             blurRadius: 12,
                             offset: const Offset(0, 6),
                             spreadRadius: 2,
@@ -207,7 +206,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: chip.isActive ? FontWeight.w600 : FontWeight.w500,
-                        color: chip.isActive ? Colors.white : Colors.grey[600],
+                        color: chip.isActive ? Colors.black87 : Colors.grey[600],
                         letterSpacing: 0.5,
                       ),
                     ),
@@ -217,7 +216,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: chip.isActive ? FontWeight.bold : FontWeight.w700,
-                        color: chip.isActive ? Colors.white : Colors.black87,
+                        color: chip.isActive ? Colors.black87 : Colors.black87,
                         letterSpacing: 0.3,
                       ),
                     ),
@@ -227,7 +226,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                         width: 20,
                         height: 3,
                         decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.8),
+                          color: Colors.black87.withOpacity(0.8),
                           borderRadius: BorderRadius.circular(2),
                         ),
                       ),
@@ -297,8 +296,8 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                       colors: [
-                        Colors.pink[50]!,
-                        Colors.pink[100]!,
+                        Colors.white,
+                        Colors.grey[100]!,
                       ],
                     ),
                     boxShadow: [
@@ -319,11 +318,18 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                           imageUrl: movie.posterUrl,
                           fit: BoxFit.cover,
                           width: double.infinity,
+                          height: double.infinity,
+                          memCacheWidth: 500,
+                          memCacheHeight: 750,
+                          maxWidthDiskCache: 500,
+                          maxHeightDiskCache: 750,
+                          fadeInDuration: const Duration(milliseconds: 300),
+                          fadeOutDuration: const Duration(milliseconds: 100),
                           placeholder: (context, url) => Container(
                             color: Colors.grey[200],
                             child: const Center(
                               child: CircularProgressIndicator(
-                                color: Colors.pink,
+                                color: Colors.grey,
                                 strokeWidth: 2,
                               ),
                             ),
@@ -436,7 +442,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _currentMovieIndex == entry.key
-                    ? Colors.pink[400]
+                    ? Colors.black87
                     : Colors.grey[400],
               ),
             );
@@ -494,20 +500,24 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                             fit: BoxFit.cover,
                             width: 140,
                             height: 90,
+                            memCacheWidth: 280,
+                            memCacheHeight: 180,
+                            maxWidthDiskCache: 280,
+                            maxHeightDiskCache: 180,
                             placeholder: (context, url) => Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                   colors: [
-                                    Colors.purple[200]!,
-                                    Colors.pink[200]!,
+                                    Colors.grey[200]!,
+                                    Colors.grey[300]!,
                                   ],
                                 ),
                               ),
                               child: const Center(
                                 child: CircularProgressIndicator(
-                                  color: Colors.white,
+                                  color: Colors.black54,
                                   strokeWidth: 2,
                                 ),
                               ),
@@ -518,8 +528,8 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                                   begin: Alignment.topLeft,
                                   end: Alignment.bottomRight,
                                   colors: [
-                                    Colors.purple[300]!,
-                                    Colors.pink[300]!,
+                                    Colors.grey[300]!,
+                                    Colors.grey[400]!,
                                   ],
                                 ),
                               ),
@@ -527,7 +537,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Icon(
-                                    Icons.play_circle_filled,
+                                    Icons.play_circle_outline,
                                     size: 40,
                                     color: Colors.white.withOpacity(0.9),
                                   ),

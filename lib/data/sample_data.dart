@@ -1,4 +1,5 @@
 import '../models/movie.dart';
+import 'image_config.dart';
 
 class SampleData {
   static List<Movie> getMovies() {
@@ -6,72 +7,124 @@ class SampleData {
       Movie(
         id: '1',
         title: 'HER',
-        posterUrl: 'https://image.tmdb.org/t/p/w500/fso4b7UQ8KMiDD2sHDgawe6g6h5.jpg',
+        posterUrl: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=500&h=750&fit=crop',
         year: '2013',
         type: 'Movie',
         duration: '126 min',
         director: 'Spike Jonze',
-        plotSummary: 'In a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.',
+        plotSummary:
+            'In a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.',
         genres: ['Drama', 'Romance', 'Sci-Fi'],
         imdbRating: 8.0,
         cast: [
-          Actor(name: 'Joaquin Phoenix', photoUrl: 'https://image.tmdb.org/t/p/w200/zb9nvvpDGQeViNsjXqTgGIzQVGn.jpg', character: 'Theodore'),
-          Actor(name: 'Amy Adams', photoUrl: 'https://image.tmdb.org/t/p/w200/yjFzXk7K4V7i8SlxLk6jQ3CLKL.jpg', character: 'Amy'),
-          Actor(name: 'Rooney Mara', photoUrl: 'https://image.tmdb.org/t/p/w200/zQ5jUXn5wd4dQekh0ZOZl0sFy2v.jpg', character: 'Catherine'),
+          Actor(
+              name: 'Joaquin Phoenix',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
+              character: 'Theodore'),
+          Actor(
+              name: 'Amy Adams',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=200&h=200&fit=crop&crop=face',
+              character: 'Amy'),
+          Actor(
+              name: 'Rooney Mara',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=200&h=200&fit=crop&crop=face',
+              character: 'Catherine'),
         ],
         trailerUrl: 'https://www.youtube.com/watch?v=dJTU48_m9KA',
       ),
       Movie(
         id: '2',
         title: 'Inception',
-        posterUrl: 'https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq27gAkgVtau9asE5.jpg',
+        posterUrl: 'https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=500&h=750&fit=crop',
         year: '2010',
         type: 'Movie',
         duration: '148 min',
         director: 'Christopher Nolan',
-        plotSummary: 'A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
+        plotSummary:
+            'A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
         genres: ['Action', 'Sci-Fi', 'Thriller'],
         imdbRating: 8.8,
         cast: [
-          Actor(name: 'Leonardo DiCaprio', photoUrl: 'https://image.tmdb.org/t/p/w200/wo2hJpn04vbtmh0B9itNP9cEnQB.jpg', character: 'Cobb'),
-          Actor(name: 'Marion Cotillard', photoUrl: 'https://image.tmdb.org/t/p/w200/h9hZ2p3w2N2c1dGv7GPt2ykBFh4.jpg', character: 'Mal'),
-          Actor(name: 'Tom Hardy', photoUrl: 'https://image.tmdb.org/t/p/w200/A7XkV7J9lQ7P6Xzs5dFrgxX2x5b.jpg', character: 'Eames'),
+          Actor(
+              name: 'Leonardo DiCaprio',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=face',
+              character: 'Cobb'),
+          Actor(
+              name: 'Marion Cotillard',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=200&h=200&fit=crop&crop=face',
+              character: 'Mal'),
+          Actor(
+              name: 'Tom Hardy',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=face',
+              character: 'Eames'),
         ],
         trailerUrl: 'https://www.youtube.com/watch?v=YoHD9XEInc0',
       ),
       Movie(
         id: '3',
         title: 'The Matrix',
-        posterUrl: 'https://image.tmdb.org/t/p/w500/f89JxwIhLQi3r3rPyQdCqSdCFa9.jpg',
+        posterUrl: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=500&h=750&fit=crop',
         year: '1999',
         type: 'Movie',
         duration: '136 min',
         director: 'The Wachowskis',
-        plotSummary: 'A computer programmer discovers that reality as he knows it is a simulation created by machines.',
+        plotSummary:
+            'A computer programmer discovers that reality as he knows it is a simulation created by machines.',
         genres: ['Action', 'Sci-Fi'],
         imdbRating: 8.7,
         cast: [
-          Actor(name: 'Keanu Reeves', photoUrl: 'https://image.tmdb.org/t/p/w200/rRdruU8tBr6jIBx5v3c4VfLQ2nu.jpg', character: 'Neo'),
-          Actor(name: 'Laurence Fishburne', photoUrl: 'https://image.tmdb.org/t/p/w200/7hS8UB3qI5dO1DkM9S6fP6y0N5z.jpg', character: 'Morpheus'),
-          Actor(name: 'Carrie-Anne Moss', photoUrl: 'https://image.tmdb.org/t/p/w200/x6uEZX33qoMWZ3zFQ6D0c3yJ9zR.jpg', character: 'Trinity'),
+          Actor(
+              name: 'Keanu Reeves',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
+              character: 'Neo'),
+          Actor(
+              name: 'Laurence Fishburne',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=200&h=200&fit=crop&crop=face',
+              character: 'Morpheus'),
+          Actor(
+              name: 'Carrie-Anne Moss',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=200&h=200&fit=crop&crop=face',
+              character: 'Trinity'),
         ],
         trailerUrl: 'https://www.youtube.com/watch?v=vKQi3bBA1y8',
       ),
       Movie(
         id: '4',
         title: 'Interstellar',
-        posterUrl: 'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg',
+        posterUrl: 'https://images.unsplash.com/photo-1542204625-de6161c8ff2d?w=500&h=750&fit=crop',
         year: '2014',
         type: 'Movie',
         duration: '169 min',
         director: 'Christopher Nolan',
-        plotSummary: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
+        plotSummary:
+            'A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.',
         genres: ['Adventure', 'Drama', 'Sci-Fi'],
         imdbRating: 8.6,
         cast: [
-          Actor(name: 'Matthew McConaughey', photoUrl: 'https://image.tmdb.org/t/p/w200/wJiGedocTuHWWniLCCPcwG8xPjT.jpg', character: 'Cooper'),
-          Actor(name: 'Anne Hathaway', photoUrl: 'https://image.tmdb.org/t/p/w200/2rja8K9hmyC7YA3s3p7zQh7jM7m.jpg', character: 'Brand'),
-          Actor(name: 'Jessica Chastain', photoUrl: 'https://image.tmdb.org/t/p/w200/l6d6gz2kCcHR6RPjb7NqW2y9VqU.jpg', character: 'Murph'),
+          Actor(
+              name: 'Matthew McConaughey',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
+              character: 'Cooper'),
+          Actor(
+              name: 'Anne Hathaway',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=200&h=200&fit=crop&crop=face',
+              character: 'Brand'),
+          Actor(
+              name: 'Jessica Chastain',
+              photoUrl:
+                  'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop&crop=face',
+              character: 'Murph'),
         ],
         trailerUrl: 'https://www.youtube.com/watch?v=zSWdZVtXT7E',
       ),
@@ -95,25 +148,25 @@ class SampleData {
       Trailer(
         id: '1',
         title: 'HER - Official Trailer',
-        thumbnailUrl: 'https://img.youtube.com/vi/dJTU48_m9KA/maxresdefault.jpg',
+        thumbnailUrl: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=280&h=180&fit=crop',
         duration: '2:31',
       ),
       Trailer(
         id: '2',
         title: 'Inception - Trailer',
-        thumbnailUrl: 'https://img.youtube.com/vi/YoHD9XEInc0/maxresdefault.jpg',
+        thumbnailUrl: 'https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=280&h=180&fit=crop',
         duration: '2:28',
       ),
       Trailer(
         id: '3',
         title: 'The Matrix - Trailer',
-        thumbnailUrl: 'https://img.youtube.com/vi/vKQi3bBA1y8/maxresdefault.jpg',
+        thumbnailUrl: 'https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=280&h=180&fit=crop',
         duration: '2:30',
       ),
       Trailer(
         id: '4',
         title: 'Interstellar - Trailer',
-        thumbnailUrl: 'https://img.youtube.com/vi/zSWdZVtXT7E/maxresdefault.jpg',
+        thumbnailUrl: 'https://images.unsplash.com/photo-1542204625-de6161c8ff2d?w=280&h=180&fit=crop',
         duration: '2:34',
       ),
     ];
