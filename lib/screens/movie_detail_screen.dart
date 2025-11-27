@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/movie.dart';
+import '../data/image_config.dart';
 
 class MovieDetailScreen extends StatefulWidget {
   final Movie movie;
@@ -45,7 +46,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                   shape: BoxShape.circle,
                 ),
                 child: IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.black87),
+                  icon: Icon(Icons.arrow_back, color: Colors.purple[800]),
                   onPressed: () => Navigator.pop(context),
                 ),
               ),
@@ -74,7 +75,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         bottomRight: Radius.circular(32),
                       ),
                       child: CachedNetworkImage(
-                        imageUrl: widget.movie.posterUrl,
+                        imageUrl: ImageConfig.getImageUrl(widget.movie.posterUrl, ImageConfig.keyFromTitle(widget.movie.title)),
                         fit: BoxFit.cover,
                         width: double.infinity,
                         placeholder: (context, url) => Container(
@@ -86,26 +87,9 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                             ),
                           ),
                         ),
-                        errorWidget: (context, url, error) => Container(
-                          color: Colors.grey[200],
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.movie_outlined,
-                                size: 60,
-                                color: Colors.grey[400],
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                'No poster available',
-                                style: TextStyle(
-                                  color: Colors.grey[600],
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
+                        errorWidget: (context, url, error) => Image.network(
+                          ImageConfig.getImageUrl('', ImageConfig.keyFromTitle(widget.movie.title)),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
@@ -158,11 +142,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.amber,
+            color: Colors.purple[400],
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: Colors.amber.withOpacity(0.3),
+                color: Colors.purple.withOpacity(0.3),
                 blurRadius: 8,
                 offset: const Offset(0, 4),
               ),
@@ -341,26 +325,22 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                     ),
                     child: ClipOval(
                       child: CachedNetworkImage(
-                        imageUrl: actor.photoUrl,
+                        imageUrl: ImageConfig.getImageUrl(actor.photoUrl, ImageConfig.keyFromTitle(actor.name)),
                         fit: BoxFit.cover,
                         width: 80,
                         height: 80,
                         placeholder: (context, url) => Container(
                           color: Colors.grey[200],
-                          child: const Center(
+                              child: const Center(
                             child: CircularProgressIndicator(
-                              color: Colors.pink,
+                              color: Colors.purple,
                               strokeWidth: 1,
                             ),
                           ),
                         ),
-                        errorWidget: (context, url, error) => Container(
-                          color: Colors.grey[200],
-                          child: Icon(
-                            Icons.person_outline,
-                            size: 40,
-                            color: Colors.grey[400],
-                          ),
+                        errorWidget: (context, url, error) => Image.network(
+                          ImageConfig.getImageUrl('', ImageConfig.keyFromTitle(actor.name)),
+                          fit: BoxFit.cover,
                         ),
                       ),
                     ),
@@ -404,8 +384,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         borderRadius: BorderRadius.circular(28),
         gradient: LinearGradient(
           colors: [
-            Colors.black87,
-            Colors.black54,
+            Colors.purple[700]!,
+            Colors.purple[400]!,
           ],
         ),
         boxShadow: [

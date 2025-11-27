@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/movie.dart';
 import '../data/sample_data.dart';
+import '../data/image_config.dart';
 import 'movie_detail_screen.dart';
 
 class MovieExplorerScreen extends StatefulWidget {
@@ -33,6 +34,15 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
     super.dispose();
   }
 
+  // helper para obtener el título principal de un trailer (antes del " - ")
+
+  String _extractMainTitle(String trailerTitle) {
+    final parts = trailerTitle.split(' - ');
+    return parts.isNotEmpty ? parts[0] : trailerTitle;
+  }
+
+  String _trailerKey(String trailerTitle) => 'trailer_' + ImageConfig.keyFromTitle(_extractMainTitle(trailerTitle));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +53,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
         title: const Text('Movie Explorer'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search, color: Colors.black87),
+            icon: Icon(Icons.search, color: Colors.purple[700]),
             onPressed: () {},
           ),
         ],
@@ -106,7 +116,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
             color: Colors.grey[600],
             fontSize: 16,
           ),
-          prefixIcon: Icon(Icons.search, color: Colors.grey[600]),
+          prefixIcon: Icon(Icons.search, color: Colors.purple[700]),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 20,
@@ -315,7 +325,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                       fit: StackFit.expand,
                       children: [
                         CachedNetworkImage(
-                          imageUrl: movie.posterUrl,
+                          imageUrl: ImageConfig.getImageUrl(movie.posterUrl, ImageConfig.keyFromTitle(movie.title)),
                           fit: BoxFit.cover,
                           width: double.infinity,
                           height: double.infinity,
@@ -334,36 +344,9 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                               ),
                             ),
                           ),
-                          errorWidget: (context, url, error) => Container(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  Colors.grey[300]!,
-                                  Colors.grey[400]!,
-                                ],
-                              ),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.movie_outlined,
-                                  size: 50,
-                                  color: Colors.white.withOpacity(0.8),
-                                ),
-                                const SizedBox(height: 12),
-                                Text(
-                                  'No image',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.9),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
+                          errorWidget: (context, url, error) => Image.network(
+                            ImageConfig.getImageUrl('', ImageConfig.keyFromTitle(movie.title)),
+                            fit: BoxFit.cover,
                           ),
                         ),
                         // Overlay con título
@@ -402,9 +385,9 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                                   const SizedBox(height: 4),
                                   Row(
                                     children: [
-                                      const Icon(
+                                      Icon(
                                         Icons.star,
-                                        color: Colors.amber,
+                                        color: Colors.purple[400],
                                         size: 16,
                                       ),
                                       const SizedBox(width: 4),
@@ -454,7 +437,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
 
   Widget _buildTrailersSection() {
     return SizedBox(
-      height: 140,
+      height: 160,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: trailers.length,
@@ -479,7 +462,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                         end: Alignment.bottomRight,
                         colors: [
                           Colors.purple[100]!,
-                          Colors.pink[100]!,
+                          Colors.purple[200]!,
                         ],
                       ),
                       boxShadow: [
@@ -496,7 +479,7 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                         fit: StackFit.expand,
                         children: [
                           CachedNetworkImage(
-                            imageUrl: trailer.thumbnailUrl,
+                            imageUrl: ImageConfig.getImageUrl(trailer.thumbnailUrl, _trailerKey(trailer.title)),
                             fit: BoxFit.cover,
                             width: 140,
                             height: 90,
@@ -522,36 +505,9 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                                 ),
                               ),
                             ),
-                            errorWidget: (context, url, error) => Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Colors.grey[300]!,
-                                    Colors.grey[400]!,
-                                  ],
-                                ),
-                              ),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.play_circle_outline,
-                                    size: 40,
-                                    color: Colors.white.withOpacity(0.9),
-                                  ),
-                                  const SizedBox(height: 6),
-                                  Text(
-                                    'Trailer',
-                                    style: TextStyle(
-                                      color: Colors.white.withOpacity(0.9),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            errorWidget: (context, url, error) => Image.network(
+                              ImageConfig.getImageUrl('', _trailerKey(trailer.title)),
+                              fit: BoxFit.cover,
                             ),
                           ),
                           // Overlay de play
@@ -586,9 +542,9 @@ class _MovieExplorerScreenState extends State<MovieExplorerScreen> {
                                       ),
                                     ],
                                   ),
-                                  child: Icon(
+                                    child: Icon(
                                     Icons.play_arrow,
-                                    color: Colors.pink[400],
+                                    color: Colors.purple[400],
                                     size: 30,
                                   ),
                                 ),

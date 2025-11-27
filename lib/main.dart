@@ -13,12 +13,12 @@ class MovieExplorerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final lightColorScheme = ColorScheme.fromSeed(
-      seedColor: const Color(0xFFE91E63), // Rosa principal del diseño
+      seedColor: const Color(0xFF6A1B9A), // Púrpura principal del diseño
       brightness: Brightness.light,
     );
 
     final darkColorScheme = ColorScheme.fromSeed(
-      seedColor: const Color(0xFFE91E63),
+      seedColor: const Color(0xFF6A1B9A),
       brightness: Brightness.dark,
     );
 
@@ -31,11 +31,11 @@ class MovieExplorerApp extends StatelessWidget {
         colorScheme: lightColorScheme,
         scaffoldBackgroundColor: Colors.white,
         textTheme: GoogleFonts.poppinsTextTheme(),
-        appBarTheme: const AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
           elevation: 0,
           centerTitle: false,
-          foregroundColor: Colors.black87,
+          foregroundColor: Colors.purple[800],
         ),
         cardTheme: CardThemeData(
           color: Colors.white,
@@ -57,8 +57,8 @@ class MovieExplorerApp extends StatelessWidget {
         ),
         extensions: const [
           AppColors(
-            gradientStart: Color(0xFFFDE2E4),
-            gradientEnd: Color(0xFFFFC1CC),
+            gradientStart: Color(0xFFEDE7F6),
+            gradientEnd: Color(0xFFD1C4E9),
           ),
         ],
       ),
@@ -76,8 +76,8 @@ class MovieExplorerApp extends StatelessWidget {
         ),
         extensions: const [
           AppColors(
-            gradientStart: Color(0xFF3A3A3A),
-            gradientEnd: Color(0xFF1C1C1C),
+            gradientStart: Color(0xFF2E1A3C),
+            gradientEnd: Color(0xFF1B0F1F),
           ),
         ],
       ),

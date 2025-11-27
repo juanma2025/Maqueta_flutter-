@@ -7,7 +7,7 @@ class SampleData {
       Movie(
         id: '1',
         title: 'HER',
-        posterUrl: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=500&h=750&fit=crop',
+        posterUrl: 'https://www.animationconnection.com/assets/artwork/1645152794-331-5822-marge-simpson-sitting-with-bart-simpson-on-couch.jpg',
         year: '2013',
         type: 'Movie',
         duration: '126 min',
@@ -148,7 +148,7 @@ class SampleData {
       Trailer(
         id: '1',
         title: 'HER - Official Trailer',
-        thumbnailUrl: 'https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=280&h=180&fit=crop',
+        thumbnailUrl: 'https://www.animationconnection.com/assets/artwork/1645152794-331-5822-marge-simpson-sitting-with-bart-simpson-on-couch.jpg',
         duration: '2:31',
       ),
       Trailer(
